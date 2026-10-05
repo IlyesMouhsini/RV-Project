@@ -1,4 +1,4 @@
-# ReValue — Simulateur d'estimation & Dépôt e-commerce (Seconde Main)
+# ReValue - Simulateur d'estimation & Dépôt e-commerce (Seconde Main)
 
 **ReValue** est une application web moderne conçue pour simplifier la revente de vêtements et d'accessoires de seconde main. Elle offre aux particuliers un tunnel fluide en 3 étapes pour estimer instantanément la valeur de leurs pièces selon la marque, le modèle et l'état, puis déclencher la prise en charge logistique via un pipeline d'automatisation.
 
