@@ -1,7 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
   import { depositStore } from '$lib/stores/depositStore';
-  import { PUBLIC_MAKE_WEBHOOK_URL } from '$env/static/public';
+  const webhookUrl = import.meta.env.PUBLIC_MAKE_WEBHOOK_URL || '';
 
   const dispatch = createEventDispatcher<{
     back: void;
@@ -21,11 +21,11 @@
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
-  const handleSubmit = async () => {
+const handleSubmit = async () => {
     errorMessage = '';
 
     // Validations locales
-    if (!$depositStore.firstName.trim() \vert{}\vert{} !$depositStore.lastName.trim()) {
+    if (!$depositStore.firstName.trim() || !$depositStore.lastName.trim()) { // ✅ CORRECT
       errorMessage = 'Veuillez renseigner votre nom et prénom.';
       return;
     }
@@ -73,8 +73,8 @@
     };
 
     try {
-      if (PUBLIC_MAKE_WEBHOOK_URL && !PUBLIC_MAKE_WEBHOOK_URL.includes('TON_ID')) {
-        const response = await fetch(PUBLIC_MAKE_WEBHOOK_URL, {
+      if (webhookUrl && !webhookUrl.includes('TON_ID')) {
+        const response = await fetch(webhookUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -86,7 +86,6 @@
           throw new Error(`Erreur HTTP: ${response.status}`);
         }
       } else {
-        // Simulation locale si le webhook n'est pas encore branché
         console.warn('Webhook Make non configuré. Mode simulation actif.', payload);
         await new Promise((resolve) => setTimeout(resolve, 800));
       }

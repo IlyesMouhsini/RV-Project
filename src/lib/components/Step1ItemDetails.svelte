@@ -76,9 +76,9 @@
 <div class="space-y-6">
   <!-- Catégorie -->
   <div>
-    <label class="block text-xs uppercase tracking-wider font-semibold text-stone-500 mb-2.5">
+    <span class="block text-xs uppercase tracking-wider font-semibold text-stone-500 mb-2.5">
       1. Catégorie de pièce
-    </label>
+    </span>
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
       {#each categories as cat}
         <button
@@ -168,9 +168,9 @@
 
   <!-- État de la pièce -->
   <div>
-    <label class="block text-xs uppercase tracking-wider font-semibold text-stone-500 mb-2.5">
+    <span class="block text-xs uppercase tracking-wider font-semibold text-stone-500 mb-2.5">
       3. État général
-    </label>
+    </span>
     <div class="space-y-2">
       {#each conditions as cond}
         <label
@@ -204,7 +204,7 @@
   <!-- Photo & détails optionnels -->
   <div class="pt-2 border-t border-stone-100">
     <div class="flex items-center justify-between mb-2">
-      <label for="details" class="text-xs uppercase tracking-wider font-semibold text-stone-500">
+      <label for="details" class="block text-xs uppercase tracking-wider font-semibold text-stone-500 mb-2">
         4. Détails complémentaires <span class="lowercase text-stone-400 font-normal">(optionnel)</span>
       </label>
     </div>
