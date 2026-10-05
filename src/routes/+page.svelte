@@ -23,14 +23,14 @@
 </script>
 
 <svelte:head>
-  <title>ReValue — Estimation & Dépôt Seconde Main</title>
+  <title>ReValue - Estimation & Dépôt Seconde Main</title>
 </svelte:head>
 
 <main class="min-h-screen bg-[#FBF9F5] text-stone-900 py-12 px-4 sm:px-6 lg:px-8">
   <div class="max-w-xl mx-auto">
     <header class="text-center mb-8">
       <span class="text-xs uppercase tracking-widest font-semibold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-        Simulateur Jaiio Partner
+        Simulateur
       </span>
       <h1 class="text-3xl font-serif font-medium mt-3 tracking-tight">ReValue</h1>
       <p class="text-sm text-stone-600 mt-1">Valorisez vos pièces de mode en quelques clics</p>
