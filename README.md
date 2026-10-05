@@ -1,56 +1,37 @@
-# sv
+# ReValue — Simulateur d'estimation & Dépôt e-commerce (Seconde Main)
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+**ReValue** est une application web moderne conçue pour simplifier la revente de vêtements et d'accessoires de seconde main. Elle offre aux particuliers un tunnel fluide en 3 étapes pour estimer instantanément la valeur de leurs pièces selon la marque, le modèle et l'état, puis déclencher la prise en charge logistique via un pipeline d'automatisation.
 
-## Creating a project
+---
 
-If you're seeing this, you've probably already done this step. Congrats!
+## ⚡️ Fonctionnalités clés
 
-```sh
-# create a new project
-npx sv create my-app
-```
+- **Tunnel en 3 étapes réactif :** Saisie dynamique de l'article, calcul instantané de la cote de revente et validation des coordonnées.
+- **Référentiel de cote & Moteur d'estimation :** Prise en compte de plus de 20 marques de mode (luxe, premium, accessible) et identification des modèles emblématiques pour un chiffrage précis basé sur les tendances du marché.
+- **Transparence financière :** Calcul automatisé du gain net vendeur selon une grille de commission dégressive.
+- **Pipeline d'ingestion & automatisation :** Envoi des données via Webhook vers un scénario Make (Integromat), stockage structuré dans Airtable et simulation d'email transactionnel.
+- **Design soigné (D2C) :** Interface épurée, responsive et accessible construite avec Tailwind CSS.
 
-To recreate this project with the same configuration:
+---
 
-```sh
-# recreate this project
-npx sv@1.1.0 create --template minimal --types ts --add tailwindcss="plugins:typography,forms" --install npm revalue
-```
+## 🛠 Stack Technique
 
-## Adding features
+- **Frontend :** [SvelteKit](https://kit.svelte.dev/) (Svelte 5 Runes) + TypeScript
+- **Styling :** [Tailwind CSS](https://tailwindcss.com/)
+- **Bundler :** [Vite](https://vitejs.dev/)
+- **Base de données :** [Airtable](https://airtable.com/) (Gestion des dépôts et statuts)
+- **Automatisation :** [Make](https://www.make.com/) (Webhooks HTTP + Orchestration de flux)
+- **Déploiement :** Vercel / Netlify
 
-Add features to your project with `sv add`:
+---
 
-```sh
-npx sv add
-```
+## 📐 Architecture & Flux de données
 
-For example, to add Tailwind CSS:
-
-```sh
-npx sv add tailwindcss
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```text
+[ Client SvelteKit ] 
+       │
+       │ (1. POST JSON payload via Webhook)
+       ▼
+[ Scénario Make ]
+       ├─► [ Airtable API ] ───► Création de la fiche dépôt (Statut: En attente)
+       └─► [ Email Service ] ──► Envoi de l'accusé de réception avec référence
